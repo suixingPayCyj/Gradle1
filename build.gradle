@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "joda-time:joda-time:2.1"
+}
+
+jar {
+    baseName = 'gs-gradle'
+    version =  '0.1.0'
+}
+//下载依赖的jar包
+task copyJars(type: Copy) {
+  from configurations.runtime
+  into 'lib' // 目标位置
+}
